@@ -8,22 +8,22 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Define BMI calculation endpoint
+
 app.post('/calculateBMI', (req, res) => {
     const { height, weight } = req.body;
 
-    // Validate input
+   
     if (!height || !weight || isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
         return res.status(400).json({ error: "Invalid height or weight value." });
     }
 
-    // Convert height to meters
-    const heightInMeters = height / 100; // Assuming height is provided in centimeters
+  
+    const heightInMeters = height / 100; 
 
-    // Calculate BMI
+
     const bmi = calculateBMI(weight, heightInMeters);
     
-    // Determine interpretation based on BMI range
+    
     let interpretation;
     if (bmi < 18.5) {
         interpretation = "Underweight";
@@ -38,7 +38,7 @@ app.post('/calculateBMI', (req, res) => {
     res.json({ bmi, interpretation });
 });
 
-// BMI calculation function
+
 function calculateBMI(weight, height) {
     return (weight / (height * height)).toFixed(2);
 }

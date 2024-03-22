@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function calculateBMI(weight, height) {
-        fetch('http://localhost:3000/calculateBMI', { // Update the URL with your backend server URL
+        fetch('http://localhost:3000/calculateBMI', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bmi = data.bmi;
                 const interpretation = data.interpretation;
 
-                // Create table
+                
                 const table = document.createElement('table');
                 table.innerHTML = `
                     <thead>
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tbody>
                 `;
 
-                // Clear previous result and append new table
+               
                 resultContainer.innerHTML = '';
                 resultContainer.appendChild(table);
             } else {
